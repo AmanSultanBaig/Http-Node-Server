@@ -1,11 +1,10 @@
-var http = require('http');
+const http = require('http');
+let portNo = 3000;
 
-//create a server object:
-http.createServer(function (req, res) {
-  
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  res.write('<h1>Hello World!</h1>'); //write a response to the client
-  res.end(); //end the response
-  
-}).listen(3000); //the server object listens on port 3000
+const serverHandler = (request, response) => {
+    response.writeHead(200,{'Content-Type':'text/html'});
+    response.write('<h1>Http Server Created using Nodejs!</h1>');
+    response.end();
+}
 
+http.createServer(serverHandler).listen(portNo,() => console.log('App is Running'));
